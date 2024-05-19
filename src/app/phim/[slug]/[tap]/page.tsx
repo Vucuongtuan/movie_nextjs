@@ -32,7 +32,8 @@ export default async function Phim({
         </div>
         <div className="w-full h-[200px]  mt-2">
           <h1 className="text-4xl font-semibold min-[200px]:max-md:text-3xl">
-            {res.data.item.name} | Tập {tap}
+            {res.data.item.name} |{" "}
+            {params.tap === "full" ? "Full" : `Tập ${tap}`}
           </h1>
           <p>
             <label

@@ -103,16 +103,25 @@ export default function ViewDetailsHero({
             className="w-full h-[85%] rounded-md"
           />
           <div className="h-[15%]  w-full ">
-            <Link
-              href={`/phim/${data.item.slug}/${
-                data.item.episodes[0].server_data[0].slug === "full"
-                  ? "full"
-                  : `tap-1`
-              }`}
-              className=" w-full h-[100%] py-2 bg-red-500 rounded-md hover:bg-red-600"
-            >
-              <button className="w-full h-[100%]">Xem phim</button>
-            </Link>
+            {data.item.episodes[0].server_data[0].slug === "" ? (
+              <button
+                className=" w-full h-[100%] py-2 bg-red-500 rounded-md hover:bg-red-600"
+                onClick={() => setOnTrailer(true)}
+              >
+                Trailer
+              </button>
+            ) : (
+              <Link
+                href={`/phim/${data.item.slug}/${
+                  data.item.episodes[0].server_data[0].slug === "full"
+                    ? "full"
+                    : `tap-1`
+                }`}
+                className=" w-full h-[100%] py-2 bg-red-500 rounded-md hover:bg-red-600"
+              >
+                <button className="w-full h-[100%]">Xem phim</button>
+              </Link>
+            )}
           </div>
         </div>
         <div className="w-[70%] px-2 h-full min-[200px]:max-lg:w-full">
