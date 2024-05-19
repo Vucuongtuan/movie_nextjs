@@ -11,8 +11,8 @@ export default function NavBar() {
   const page = useSelector((state: any) => state.page.value);
   return (
     <header className="w-full h-full flex mb-2  pt-3 min-[200px]:max-md:flex-col-reverse min-[200px]:max-md:mb-3">
-      <div className="w-3/4 h-full min-[200px]:max-md:w-full">
-        <nav className="h-full w-1/3 flex space-x-4 px-4 text-xl  min-[200px]:max-md:w-full">
+      <div className="w-3/4 h-full min-[200px]:max-md:w-full ">
+        <nav className="h-full w-full flex space-x-4 px-4 text-xl  min-[200px]:max-md:w-full">
           <li>
             <Link
               href="/"
