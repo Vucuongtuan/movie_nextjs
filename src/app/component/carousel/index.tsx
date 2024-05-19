@@ -1,0 +1,77 @@
+import * as React from "react";
+
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { IMovieData } from "@/types/movie.types";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function CarouselSize({ data }: { data: any }) {
+  console.log();
+
+  return (
+    <Carousel
+      opts={{
+        align: "start",
+      }}
+      className="w-full h-full px-2 carousel_custom "
+    >
+      <CarouselContent>
+        {data &&
+          data.data.items &&
+          data.data.items.map((item: IMovieData, index: number) => (
+            <CarouselItem
+              key={index}
+              className="basis-1/3 md:basis-1/3 lg:basis-1/5 xl:basis-1/5 sm:basis-1/3 mb:basis:1/2  group"
+            >
+              <div className=" h-full">
+                <Card className="h-full rounded-md overflow-hidden relative">
+                  <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
+                    <Link
+                      href={"/details/" + item.slug}
+                      className="w-full h-full"
+                    >
+                      <Image
+                        src={process.env.BASE_IMAGE_URL + item.thumb_url}
+                        alt={item.name}
+                        width={175}
+                        height={270}
+                        loading="lazy"
+                        className="w-full h-5/6"
+                      />
+                      <span className="h-1/6  w-full p-1 text-md font-semibold">
+                        {item.name}
+                      </span>
+                    </Link>
+                  </CardContent>
+                  <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 dark:text-white font-[500]">
+                    {item.episode_current.length > 8 ? (
+                      <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
+                        {item.episode_current.slice(0, 8)}
+                      </span>
+                    ) : (
+                      <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
+                        {item.episode_current}
+                      </span>
+                    )}
+
+                    <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
+                      {item.lang} / {item.year}
+                    </span>
+                  </div>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+      </CarouselContent>
+      <CarouselPrevious className=" absolute" />
+      <CarouselNext />
+    </Carousel>
+  );
+}
