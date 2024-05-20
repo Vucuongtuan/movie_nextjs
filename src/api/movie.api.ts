@@ -33,3 +33,24 @@ export const getMovieSearch = async (keyword: string, page: number) => {
   const data = await res.json();
   return data;
 };
+export const getMovieByOption = async (
+  type: string,
+  category: string,
+  country: string,
+  year: string,
+  page: string
+) => {
+  const res = await fetch(
+    `https://ophim1.com/v1/api/danh-sach/${type}?sort_field=modified.time&category=${category}&country=${country}&year=${year}&page=${page}`
+  );
+  const data = await res.json();
+  return data;
+};
+export const getListOption = async (name: string) => {
+  const res = await fetch(`https://ophim1.com/v1/api/${name}`, {
+    method: "GET",
+    next: { revalidate: 5 },
+  });
+  const data = await res.json();
+  return data;
+};

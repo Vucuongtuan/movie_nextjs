@@ -28,6 +28,7 @@ export default function CarouselSlide({ data }: { data: any }) {
                         alt={item.name}
                         height={780}
                         width={1200}
+                        loading="lazy"
                         className="h-full w-full object-cover rounded-md transition-all duration-500"
                       />
                       <div

@@ -51,8 +51,8 @@ export default async function Cartoon() {
   ]);
 
   return (
-    <main className="h-auto mt-4">
-      <section className="w-full h-[400px] flex p-2 sm:h-[400px] lg:h-[500px]">
+    <main className="h-auto mt-2">
+      <section className="w-full h-[400px] flex px-2 sm:h-[400px] lg:h-[500px]">
         <div className="w-full h-full ">
           <CarouselSlide data={newHanUpdate.data} />
         </div>

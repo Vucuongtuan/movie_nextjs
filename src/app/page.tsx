@@ -38,8 +38,8 @@ export default async function Home() {
     ]);
 
   return (
-    <main className="  h-auto mt-4">
-      <section className="w-full h-[400px] flex p-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
+    <main className="  h-auto mt-2">
+      <section className="w-full h-[400px] flex px-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
         <div className="w-full h-full ">
           <CarouselSlide data={newMovie.data} />
         </div>

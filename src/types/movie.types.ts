@@ -2,7 +2,7 @@ export interface IMovieProps {
   type: string;
   country: string;
   year: String;
-  page: Number;
+  page: string;
   category: string;
 }
 export interface IMovieData {

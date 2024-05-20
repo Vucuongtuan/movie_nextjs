@@ -5,6 +5,7 @@ import debounce from "lodash.debounce";
 import Image from "next/image";
 import { Card, CardContent } from "../ui/card";
 import Link from "next/link";
+import { Skeleton } from "../ui/skeleton";
 export default function SearchBox() {
   const [dataResult, setDataResult] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -64,7 +65,9 @@ export default function SearchBox() {
           </div>
         </div>
       </section>
-      {dataResult.length === 0 ? (
+      {loading ? (
+        <Skeleton className="h-full w-full min-h-[1200px]" />
+      ) : dataResult.length === 0 ? (
         <div className="">
           <Image
             src="/search.svg"

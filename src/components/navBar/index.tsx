@@ -18,7 +18,7 @@ export default function NavBar() {
               href="/"
               className={`${
                 pathName === "/"
-                  ? "text-xl border-b-2 border-red-600"
+                  ? "text-xl border-b-[3px] group  border-red-600"
                   : "text-sm text-[#989898]"
               }`}
             >
@@ -53,14 +53,14 @@ export default function NavBar() {
           <li>
             {" "}
             <Link
-              href="/the-loai"
+              href="/loc-phim"
               className={`${
-                pathName === "/the-loai"
+                pathName === "/loc-phim"
                   ? "text-xl border-b-2 border-red-600"
                   : "text-sm text-[#989898]"
               }`}
             >
-              Thể loại
+              Lọc phim
             </Link>
           </li>
         </nav>
