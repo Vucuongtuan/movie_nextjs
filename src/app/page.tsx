@@ -12,28 +12,28 @@ export default async function Home() {
         country: "",
         year: new Date().getFullYear().toString(),
         category: "",
-        page: 1,
+        page: "1",
       }),
       getMovie({
         type: "phim-bo",
         country: "han-quoc",
         year: new Date().getFullYear().toString(),
         category: "",
-        page: 1,
+        page: "1",
       }),
       getMovie({
         type: "phim-bo",
         country: "trung-quoc",
         year: new Date().getFullYear().toString(),
         category: "",
-        page: 1,
+        page: "1",
       }),
       getMovie({
         type: "phim-bo",
         country: "au-my",
         year: new Date().getFullYear().toString(),
         category: "",
-        page: 1,
+        page: "1",
       }),
     ]);
 
