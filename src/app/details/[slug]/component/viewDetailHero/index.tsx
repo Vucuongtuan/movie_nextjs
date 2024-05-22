@@ -1,8 +1,12 @@
 "use client";
+import { AddMovieToList } from "@/api/auth.api";
 import { useToast } from "@/components/ui/use-toast";
+import { RootState } from "@/lib/redux";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function ViewDetailsHero({
   data,
@@ -12,6 +16,7 @@ export default function ViewDetailsHero({
   url: string | undefined;
 }) {
   const { toast } = useToast();
+  const dataUser = useSelector((state: RootState) => state.checkAuth.dataAuth);
   const [onTrailer, setOnTrailer] = useState<boolean>(false);
   const trailerFrame = (): any => {
     return (
@@ -27,7 +32,17 @@ export default function ViewDetailsHero({
       ></iframe>
     );
   };
+  const { data: session, status } = useSession();
+  console.log("====================================");
+  console.log(status);
+  console.log("====================================");
+  const handleAddMovieToList = useCallback(async () => {
+    // const res = await AddMovieToList(dataUser.id, dataUser);
 
+    console.log("====================================");
+    console.log(dataUser);
+    console.log("====================================");
+  }, []);
   return (
     <div className="h-auto w-full relative">
       <section
@@ -111,16 +126,38 @@ export default function ViewDetailsHero({
                 Trailer
               </button>
             ) : (
-              <Link
-                href={`/phim/${data.item.slug}/${
-                  data.item.episodes[0].server_data[0].slug === "full"
-                    ? "full"
-                    : `tap-1`
-                }`}
-                className=" w-full h-[100%] py-2 bg-red-500 rounded-md hover:bg-red-600"
-              >
-                <button className="w-full h-[100%]">Xem phim</button>
-              </Link>
+              <div className="flex mt-1">
+                <Link
+                  href={`/phim/${data.item.slug}/${
+                    data.item.episodes[0].server_data[0].slug === "full"
+                      ? "full"
+                      : `tap-1`
+                  }`}
+                  className=" w-2/3 h-[100%] py-2 bg-red-500 rounded-md hover:bg-red-600"
+                >
+                  <button className="w-full h-[100%]">Xem phim</button>
+                </Link>
+                <button
+                  className="w-1/3 bg-red-500 rounded-md ml-1 flex justify-center items-center"
+                  title="Thêm vào danh sách xem sau"
+                  onClick={handleAddMovieToList}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"
+                    />
+                  </svg>
+                </button>
+              </div>
             )}
           </div>
         </div>

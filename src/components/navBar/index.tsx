@@ -4,14 +4,15 @@ import { useSelector } from "react-redux";
 import { ModeToggle } from "../ModeToggle";
 import { usePathname } from "next/navigation";
 import Search from "./search";
+import Image from "next/image";
+import Dropdown from "./dropdown";
 
 export default function NavBar() {
   const pathName = usePathname();
-
   const page = useSelector((state: any) => state.page.value);
   return (
     <header className="w-full h-full flex mb-2  pt-3 min-[200px]:max-md:flex-col-reverse min-[200px]:max-md:mb-3">
-      <div className="w-3/4 h-full min-[200px]:max-md:w-full ">
+      <div className="w-1/2 h-full flex min-[200px]:max-md:w-full ">
         <nav className="h-full w-full flex space-x-4 px-4 text-xl  min-[200px]:max-md:w-full">
           <li>
             <Link
@@ -65,13 +66,15 @@ export default function NavBar() {
           </li>
         </nav>
       </div>
-      <div className="w-1/4 h-full flex justify-end px-4 min-[200px]:max-md:w-full">
+      <div className=" h-full flex-grow  flex justify-end px-4 min-[200px]:max-md:w-full">
         <div className="logo w-1/3 hidden min-[200px]:max-md:block">
           TC Phim
         </div>
-        <Search />
-
+        <div className="w-1/3 ">
+          <Search />
+        </div>
         <ModeToggle />
+        <Dropdown />
       </div>
     </header>
   );

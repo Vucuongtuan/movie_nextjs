@@ -1,13 +1,17 @@
 "use client";
 import { RootState } from "@/lib/redux";
 import { changeAction } from "@/lib/redux/sideBarReducer";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { Button } from "../ui/button";
+import { useToast } from "../ui/use-toast";
 export default function SideBar({ action }: { action: boolean }) {
+  const { data: session, status } = useSession();
+  const { toast } = useToast();
   const dispatch = useDispatch();
   const pathName = usePathname();
   const handleActionSidebar = () => {
@@ -21,7 +25,7 @@ export default function SideBar({ action }: { action: boolean }) {
       }`}
     >
       <div className="w-full h-1/6 px-2 flex justify-center items-center">
-        <Image
+        {/* <Image
           src={"/logo.png"}
           alt={"logo"}
           height={200}
@@ -34,7 +38,7 @@ export default function SideBar({ action }: { action: boolean }) {
           }`}
         >
           Phim
-        </span>
+        </span> */}
       </div>
       <ul className="h-4/6 w-full px-2 text-xl font-semibold space-y-4">
         <li
@@ -117,31 +121,63 @@ export default function SideBar({ action }: { action: boolean }) {
             pathName === "/login" ? "bg-red-600" : null
           }`}
         >
-          <Link
-            href="/login"
-            className=" w-full flex items-center overflow-hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 mx-2"
+          {status === "authenticated" ? (
+            <Button
+              className=" w-full flex items-center overflow-hidden"
+              onClick={async () => {
+                await signOut();
+                toast({
+                  title: "Bạn đã đăng xuất thành công",
+                });
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 mx-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
 
-            {action ? <></> : <span> Đăng nhập</span>}
-          </Link>
+              {action ? <></> : <span> Đăng xuâts</span>}
+            </Button>
+          ) : (
+            <Link
+              href="/login"
+              className=" w-full flex items-center overflow-hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 mx-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
+
+              {action ? <></> : <span> Đăng nhập</span>}
+            </Link>
+          )}
         </li>
       </ul>
-      <div className="w-full h-1/6 flex justify-center items-end p-4 transition-all duration-200">
-        {" "}
+      <div
+        className={`w-full h-1/6 flex justify-center items-end p-4 transition-all  duration-200
+      ${action ? " flex-col" : ""}
+      `}
+      >
         <div
           className={`h-[30px] w-full flex   ${
             action ? " justify-center" : "justify-end"

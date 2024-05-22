@@ -33,6 +33,7 @@ export const getMovieSearch = async (keyword: string, page: number) => {
   const data = await res.json();
   return data;
 };
+
 export const getMovieByOption = async (
   type: string,
   category: string,

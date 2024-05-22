@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["img.ophim.live"],
+    domains: ["img.ophim.live", "scontent.fsgn2-9.fna.fbcdn.net"],
   },
 };
 

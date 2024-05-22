@@ -34,7 +34,7 @@ export default function Search() {
     []
   );
   const containerClassName = useMemo(() => {
-    return `relative h-full w-full flex px-2 justify-start items-center transition-all duration-500 md:justify-center`;
+    return `relative float-right h-full w-full flex justify-end items-end transition-all duration-500 md:justify-center`;
   }, []);
 
   const resultContainerClassName = useMemo(() => {
@@ -46,7 +46,7 @@ export default function Search() {
     <div className={containerClassName}>
       <input
         type="text"
-        className="p-2 mr-6 rounded-full flex-grow text-black bg-[#c7c6c638] dark:text-white "
+        className="p-2   rounded-full flex-grow text-black bg-[#c7c6c638] dark:text-white "
         placeholder="Tìm kiếm ...."
         onChange={(e) => handleChangeInput(e.target.value)}
       />
