@@ -18,7 +18,7 @@ export default async function Cartoon() {
       country: "",
       year: new Date().getFullYear().toString(),
       category: "",
-      page: 1,
+      page: "1",
     }),
     getMovie({
       type: "hoat-hinh",
