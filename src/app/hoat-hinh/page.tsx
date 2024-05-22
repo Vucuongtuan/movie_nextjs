@@ -25,28 +25,28 @@ export default async function Cartoon() {
       country: "",
       year: new Date().getFullYear().toString(),
       category: "hanh-dong",
-      page: 1,
+      page: "1",
     }),
     getMovie({
       type: "hoat-hinh",
       country: "",
       year: new Date().getFullYear().toString(),
       category: "tinh-cam",
-      page: 1,
+      page: "1",
     }),
     getMovie({
       type: "hoat-hinh",
       country: "",
       year: new Date().getFullYear().toString(),
       category: "hai-huoc",
-      page: 1,
+      page: "1",
     }),
     getMovie({
       type: "hoat-hinh",
       country: "",
       year: new Date().getFullYear().toString(),
       category: "vien-tuong",
-      page: 1,
+      page: "1",
     }),
   ]);
 
