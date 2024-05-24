@@ -52,7 +52,7 @@ export const sendOtp = async (email: string) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(email),
+    body: JSON.stringify({ email: email }),
   });
   const data = await res.json();
   return data;
@@ -77,4 +77,13 @@ export const getUserByEmail = async (email: string) => {
   });
   const data = await res.json();
   return data;
+};
+export const createAccount = async (data: any) => {
+  const res = await fetch(`http://localhost:4000/auth/sign-up`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const dataa = await res.json();
+  return dataa;
 };
