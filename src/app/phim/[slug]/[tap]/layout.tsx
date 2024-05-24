@@ -32,13 +32,13 @@ export default async function PhimLayout({
             ))}
           </div>
         </div>
-        <div className="w-1/4 h-full min-h-[500px] rounded-md border-2 ml-2  min-[200px]:max-lg:hidden">
-          <div className="h-full w-full p-2  grid grid-cols-4 gap-3 overflow-y-scroll  ">
+        <div className="w-1/4 h-[500px] overflow-y-scroll rounded-md border-2 ml-2  min-[200px]:max-lg:hidden">
+          <div className="min-h-[100px] h-auto w-full p-2  grid grid-cols-4     ">
             {tapMovie.map((item: IMovieTap) => (
               <Link
                 href={`/phim/${res.data.item.slug}/tap-${item.slug}`}
                 key={item.slug}
-                className={`text-center rounded-md ${
+                className={`text-center rounded-md h-8 w-16 ${
                   tap.toString() === item.slug ? "bg-red-600 text-white" : ""
                 }`}
               >

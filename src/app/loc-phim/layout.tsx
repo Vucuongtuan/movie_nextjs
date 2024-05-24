@@ -5,17 +5,9 @@ import PaginationLoc from "./pagination";
 export default async function LocLayout({
   children,
   params,
-  searchParams,
 }: Readonly<{
   children: React.ReactNode;
   params: { type: string };
-  searchParams: {
-    type: string;
-    category: string;
-    country: string;
-    year: string;
-    page: string;
-  };
 }>) {
   const [category, country] = await Promise.all([
     getListOption("the-loai"),
@@ -24,7 +16,11 @@ export default async function LocLayout({
 
   return (
     <main className="w-full h-auto px-2">
-      <FormLoc category={category.data.items} country={country.data.items} />
+      <FormLoc
+        category={category.data.items}
+        country={country.data.items}
+        params={params.type}
+      />
       {children}
       <section className="w-full h-[100px] py-8 px-6">
         <PaginationLoc params={params.type} />

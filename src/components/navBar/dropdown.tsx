@@ -30,6 +30,7 @@ export default function Dropdown() {
     </>
   );
   const handleLogOut = useCallback(async () => {
+    localStorage.removeItem("profileUser");
     await signOut();
     toast({
       title: "Đăng xuất thành công",
@@ -37,7 +38,9 @@ export default function Dropdown() {
   }, []);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>{drop()}</DropdownMenuTrigger>
+      <DropdownMenuTrigger className=" outline-none">
+        {drop()}
+      </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>
           {session && session.user && session.user.name}

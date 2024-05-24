@@ -1,21 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Button } from "@/components/ui/button";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Login, LoginFacebook } from "@/api/auth.api";
 import { useDispatch, useSelector } from "react-redux";
-import { auth_login, auth_logout } from "@/lib/redux/auth";
 import { RootState } from "@/lib/redux";
 import { useRouter } from "next/navigation";
+import { auth_login } from "@/lib/redux/auth";
 
 export default function FormLogin() {
   const { toast } = useToast();
   const dispatch = useDispatch();
-  const router = useRouter();
-  const auth = useSelector((state: RootState) => state.checkAuth.auth);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const handleSubmit = useCallback(async (e: any) => {
     e.preventDefault();
@@ -36,10 +35,19 @@ export default function FormLogin() {
   }, []);
 
   const { data: session, status } = useSession();
-
+  useEffect(() => {
+    dispatch(
+      auth_login({ name: session?.user?.name, email: session?.user?.email })
+    );
+  }, []);
   const handleFacebookLogin = useCallback(async () => {
     await signIn("facebook");
-  }, [status, session, dispatch]);
+
+    toast({
+      title: "Đăng nhập thành công",
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <form action="" className="mt-4 text-lg" onSubmit={handleSubmit}>

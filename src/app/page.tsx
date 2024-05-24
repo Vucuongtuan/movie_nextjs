@@ -2,9 +2,14 @@ import Image from "next/image";
 import { getMovie } from "@/api/movie.api";
 import React, { Suspense } from "react";
 import CarouselSlide from "./component/carouselSlide";
+import { cookies } from "next/headers";
 
 const ListMovie = React.lazy(() => import("./component/listMovie"));
 export default async function Home() {
+  console.log("====================================");
+  console.log(cookies().get("token")?.value);
+  console.log("====================================");
+
   const [newMovie, newHanUpdate, newTrungUpdate, newLeUpdate] =
     await Promise.all([
       getMovie({

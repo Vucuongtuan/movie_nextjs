@@ -9,7 +9,10 @@ const checkAuth = createSlice({
           ? true
           : false
         : false,
-    dataAuth: [],
+    dataAuth:
+      typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem("profileUser") ?? "[]")
+        : [],
   },
   reducers: {
     auth_login: (state, action) => {

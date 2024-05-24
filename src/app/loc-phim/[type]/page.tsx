@@ -25,11 +25,11 @@ export default async function LocMovieType({
   );
   const data = res.data.items;
   return (
-    <div className="w-full h-auto min-h-[700px]  ">
-      <section className="w-full h-full grid gap-4 xl:grid-cols-5 ">
+    <div className="w-full  min-h-[700px]  ">
+      <section className="w-full h-full grid gap-4 xl:grid-cols-5  lg:grid-cols-4 md:grid-cols-3 min-[200px]:max-md:grid-cols-3">
         {data.map((item: any) => (
           <Card
-            className="h-[404px] rounded-md overflow-hidden relative"
+            className="h-[404px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]"
             key={item._id}
           >
             <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
@@ -42,12 +42,12 @@ export default async function LocMovieType({
                   loading="lazy"
                   className="w-full h-5/6"
                 />
-                <span className="h-1/6  w-full p-1 text-md font-semibold">
+                <span className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.8rem]">
                   {item.name}
                 </span>
               </Link>
             </CardContent>
-            <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 dark:text-white font-[500]">
+            <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 dark:text-white font-[500] min-[200px]:max-md:text-[0.5rem]">
               {item.episode_current.length > 8 ? (
                 <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
                   {item.episode_current.slice(0, 8)}

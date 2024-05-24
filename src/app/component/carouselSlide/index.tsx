@@ -29,7 +29,7 @@ export default function CarouselSlide({ data }: { data: any }) {
                         height={780}
                         width={1200}
                         loading="lazy"
-                        className="h-full w-full object-cover rounded-md transition-all duration-500"
+                        className="h-full w-full object-cover object-top rounded-md transition-all duration-500"
                       />
                       <div
                         className="absolute h-full   top-0 left-0 bg-gradient-to-r  from-[rgba(0,0,0,0.8453432398349965)] via-[rgba(0,0,0,0.6576681698069853)] to-transparent"

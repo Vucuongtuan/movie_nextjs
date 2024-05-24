@@ -15,9 +15,9 @@ export default async function Phim({
   const tapResult = () => {
     if (params.tap === "full") {
       return tapMovie[0];
-    } else {
+    } else if (params.tap.includes("tap")) {
       for (let i = 0; i < tapMovie.length; i++) {
-        if (parseInt(tapMovie[i].slug) === tap) {
+        if (parseInt(tapMovie[i].name) === tap) {
           return tapMovie[i];
         }
       }

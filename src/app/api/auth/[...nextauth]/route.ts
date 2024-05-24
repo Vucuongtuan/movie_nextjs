@@ -1,13 +1,28 @@
+import { profile } from "console";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import FacebookProvider from "next-auth/providers/facebook";
 // FACEBOOK_APP_ID = 1106710467103176
 // FACEBOOK_APP_SECRET =282fe115798957dc074dd0b6605b3b94
+
 const authOptions: NextAuthOptions = {
   providers: [
     FacebookProvider({
       clientId: process.env.FACEBOOK_APP_ID || "",
       clientSecret: process.env.FACEBOOK_APP_SECRET || "",
       profile(profile) {
+        fetch("http://localhost:4000/auth/facebook", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: profile.name,
+            email: profile.email,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log("User data sent to backend:", data))
+          .catch((error) => console.error("Error sending user data:", error));
         return {
           id: profile.id,
           name: profile.name,
@@ -38,7 +53,7 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async redirect({ url, baseUrl }) {
-      return baseUrl;
+      return baseUrl + "/check";
     },
   },
 };

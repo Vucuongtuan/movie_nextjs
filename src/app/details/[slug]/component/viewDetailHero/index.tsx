@@ -11,9 +11,11 @@ import { useSelector } from "react-redux";
 export default function ViewDetailsHero({
   data,
   url,
+  token,
 }: {
   data: any;
   url: string | undefined;
+  token: string | undefined;
 }) {
   const { toast } = useToast();
   const dataUser = useSelector((state: RootState) => state.checkAuth.dataAuth);
@@ -33,15 +35,38 @@ export default function ViewDetailsHero({
     );
   };
   const { data: session, status } = useSession();
-  console.log("====================================");
-  console.log(status);
-  console.log("====================================");
-  const handleAddMovieToList = useCallback(async () => {
-    // const res = await AddMovieToList(dataUser.id, dataUser);
 
-    console.log("====================================");
-    console.log(dataUser);
-    console.log("====================================");
+  const handleAddMovieToList = useCallback(async (movie: any) => {
+    if (token === undefined) {
+      alert("Vui lòng đăng nhập để có thể lưu phim");
+    } else {
+      const local =
+        typeof window !== "undefined"
+          ? JSON.parse(localStorage.getItem("profileUser") ?? "")
+          : undefined;
+      const res = await AddMovieToList(local.email, {
+        name: movie.name,
+        slug: movie.slug,
+        tap: movie.episode_current,
+        thumb_url: movie.thumb_url,
+        poster_url: movie.poster_url,
+      });
+      console.log("====================================");
+      console.log(res);
+      console.log("====================================");
+      if (res.status === "success") {
+        toast({
+          title: "Thêm phim vào danh sách thành công",
+        });
+      } else {
+        toast({
+          title: "Thêm phim vào danh sách thất bại",
+          description: `${res.message}`,
+          variant: "destructive",
+        });
+      }
+    }
+    // const res = await AddMovieToList(dataUser.id, dataUser);
   }, []);
   return (
     <div className="h-auto w-full relative">
@@ -140,7 +165,7 @@ export default function ViewDetailsHero({
                 <button
                   className="w-1/3 bg-red-500 rounded-md ml-1 flex justify-center items-center"
                   title="Thêm vào danh sách xem sau"
-                  onClick={handleAddMovieToList}
+                  onClick={() => handleAddMovieToList(data.item)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

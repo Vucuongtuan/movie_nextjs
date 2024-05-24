@@ -31,7 +31,10 @@ export default function CarouselSize({ data }: { data: any }) {
               className="basis-1/3 md:basis-1/3 lg:basis-1/5 xl:basis-1/5 sm:basis-1/3 mb:basis:1/2  group"
             >
               <div className=" h-full">
-                <Card className="h-full rounded-md overflow-hidden relative">
+                <Card
+                  className="h-[404px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]"
+                  key={item._id}
+                >
                   <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
                     <Link
                       href={"/details/" + item.slug}
@@ -45,12 +48,12 @@ export default function CarouselSize({ data }: { data: any }) {
                         loading="lazy"
                         className="w-full h-5/6"
                       />
-                      <span className="h-1/6  w-full p-1 text-md font-semibold">
+                      <span className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.8rem]">
                         {item.name}
                       </span>
                     </Link>
                   </CardContent>
-                  <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 dark:text-white font-[500]">
+                  <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 dark:text-white font-[500] min-[200px]:max-md:text-[0.5rem]">
                     {item.episode_current.length > 8 ? (
                       <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
                         {item.episode_current.slice(0, 8)}

@@ -23,9 +23,18 @@ export const LoginFacebook = async (email: string, name: string) => {
   const data = await res.json();
   return data;
 };
-export const AddMovieToList = async (idUser: string, movie: any[]) => {
+export const AddMovieToList = async (
+  email: string,
+  movie: {
+    name: string;
+    slug: string;
+    tap: string;
+    thumb_url: string;
+    poster_url: string;
+  }
+) => {
   const data = {
-    idUser: idUser,
+    email: email,
     movie,
   };
   const res = await fetch(`http://localhost:4000/list`, {
@@ -39,6 +48,27 @@ export const AddMovieToList = async (idUser: string, movie: any[]) => {
 };
 export const sendOtp = async (email: string) => {
   const res = await fetch(`http://localhost:4000/auth/send-otp`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(email),
+  });
+  const data = await res.json();
+  return data;
+};
+export const getListMovie = async (id: string) => {
+  const res = await fetch(`http://localhost:4000/list/id?id=${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  return data;
+};
+export const getUserByEmail = async (email: string) => {
+  const res = await fetch(`https://localhost:4000/auth/email`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -28,7 +28,7 @@ import { Input } from "@/components/ui/input";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 const formSchema = z.object({
   type: z.string().optional(),
   category: z.string().optional(),
@@ -68,12 +68,15 @@ function getYears() {
 export default function FormLoc({
   category,
   country,
+  params,
 }: {
   category: IFormLocProps[];
   country: IFormLocProps[];
+  params: string;
 }) {
   const routers = useRouter();
   const year = getYears();
+  const searchParams = useSearchParams();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -143,7 +146,7 @@ export default function FormLoc({
             name="country"
             render={({ field }) => (
               <FormItem className="mr-1">
-                <FormLabel>Loại phim : </FormLabel>
+                <FormLabel>Quốc gia : </FormLabel>
                 <select
                   id=""
                   className=" outline-none py-2 px-4 max-width-[100px] rounded-md"
