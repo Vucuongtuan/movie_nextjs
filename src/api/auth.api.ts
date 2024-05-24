@@ -13,7 +13,7 @@ export const Login = async (email: string, password: string) => {
   return data;
 };
 export const LoginFacebook = async (email: string, name: string) => {
-  const res = await fetch(`http://localhost:4000/auth/facebook`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/auth/facebook`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const AddMovieToList = async (
     email: email,
     movie,
   };
-  const res = await fetch(`http://localhost:4000/list`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/list`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const AddMovieToList = async (
   return await res.json();
 };
 export const sendOtp = async (email: string) => {
-  const res = await fetch(`http://localhost:4000/auth/send-otp`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/auth/send-otp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const sendOtp = async (email: string) => {
   return data;
 };
 export const getListMovie = async (id: string) => {
-  const res = await fetch(`http://localhost:4000/list/id?id=${id}`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/list/id?id=${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export const getUserByEmail = async (email: string) => {
   return data;
 };
 export const createAccount = async (data: any) => {
-  const res = await fetch(`http://localhost:4000/auth/sign-up`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/auth/sign-up`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
