@@ -1,21 +1,34 @@
+"use client";
 import { getListMovie } from "@/api/auth.api";
-import React, { useContext } from "react";
-import ProviderPage from "./providerPage";
+import React, { useContext, useEffect, useState } from "react";
 import NotFound from "./notFound";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 
-export default async function ListMoviePage({ id }: { id: string }) {
-  const res = await getListMovie(id);
-  if (res.data.list.length === 0) {
+export default function ListMoviePage() {
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const local = localStorage.getItem("profileUser") ?? "";
+    if (local) {
+      const id = JSON.parse(local)?.id;
+      const getData = async () => {
+        const res = await getListMovie(id);
+        setData(res.data.list);
+      };
+      getData();
+    }
+  }, []);
+
+  if (data.length === 0) {
     return <NotFound />;
   }
 
   return (
     <main className="h-auto w-full px-2">
       <section className="w-full h-fulll ">
-        {res.data.list.map((item: any) => (
+        {data.map((item: any) => (
           <Card
             className="h-[404px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]"
             key={item.name}
