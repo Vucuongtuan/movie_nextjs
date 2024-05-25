@@ -18,7 +18,7 @@ export default function SideBar({ action }: { action: boolean }) {
         action ? ` w-[5%] min-md:max-lg:min-w-[50px] ` : ""
       }`}
     >
-      <div className="w-full h-1/6 px-2 overflow-hidden">
+      <div className="w-full h-1/6 px-2  overflow-hidden">
         <div className="flex justify-center items-center py-4 transition-all duration-200 overflow-hidden">
           <Image
             src={"/logo-512x512.png"}
@@ -27,7 +27,9 @@ export default function SideBar({ action }: { action: boolean }) {
             width={512}
             className={`h-full  pl-2 ${action ? "w-full" : "w-1/2"}`}
           />
-          <span className={`text-5xl ${action ? "hidden" : ""}`}>PHIM</span>
+          <span className={`xl:text-5xl md:text-2xl ${action ? "hidden" : ""}`}>
+            PHIM
+          </span>
         </div>
       </div>
       <LinkRouter action={action} />

@@ -3,7 +3,7 @@ import { ModeToggle } from "../ModeToggle";
 import Search from "./search";
 import Dropdown from "./dropdown";
 import NavMenu from "./navMenu";
-
+import { cookies } from "next/headers";
 export default function NavBar() {
   return (
     <header className="w-full h-full flex mb-2  pt-3 min-[200px]:max-md:flex-col-reverse min-[200px]:max-md:mb-3">

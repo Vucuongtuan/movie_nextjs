@@ -11,9 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/redux";
 import { useRouter } from "next/navigation";
 import { auth_login } from "@/lib/redux/auth";
-
+import Cookies from "js-cookie";
 export default function FormLogin() {
   const { toast } = useToast();
+  const router = useRouter();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const handleSubmit = useCallback(async (e: any) => {
@@ -21,11 +22,31 @@ export default function FormLogin() {
     try {
       const values = e.target;
       const res = await Login(values.tk.value, values.mk.value);
+      if (res.status === "success") {
+        toast({
+          title: "Đăng nhập thành công",
+          description: `Xin chào ${res?.name} `,
+        });
 
-      toast({
-        title: values.tk.value + " | " + values.mk.value,
-        description: JSON.stringify(res),
-      });
+        Cookies.set("token", res.token, { expires: 7 });
+        localStorage.setItem(
+          "profileUser",
+          JSON.stringify({
+            id: res.id,
+            name: res.name,
+            email: res.email,
+          })
+        );
+        setTimeout(() => {
+          router.push("/");
+        }, 2000);
+      } else {
+        toast({
+          title: "Đăng nhập thất bại",
+          description: `${res.message}`,
+          variant: "destructive",
+        });
+      }
     } catch (err) {
       toast({
         title: "Không thể đăng nhập, kiểm tra lại tk và mk",

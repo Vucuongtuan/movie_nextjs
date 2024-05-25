@@ -1,5 +1,5 @@
 export const Login = async (email: string, password: string) => {
-  const res = await fetch(`https://localhost:4000/auth/sign-in`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/auth/sign-in`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export const getListMovie = async (id: string) => {
   return data;
 };
 export const getUserByEmail = async (email: string) => {
-  const res = await fetch(`https://localhost:4000/auth/email`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/auth/email`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
