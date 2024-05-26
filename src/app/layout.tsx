@@ -3,10 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import LayoutProvider from "./layoutProvider";
-import { SessionProvider } from "next-auth/react";
 import NavBar from "@/components/navBar";
 import { ThemeProvider } from "@/components/theme-provider";
-import SideBar from "@/components/sideBar";
 import { cookies } from "next/headers";
 
 const fontSans = FontSans({
@@ -49,10 +47,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LayoutProvider>
-            <NavBar />
-            {children}
-          </LayoutProvider>
+          <LayoutProvider>{children}</LayoutProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -5,7 +5,7 @@ export default function loading() {
   return (
     <div className="h-[91vh] w-full ">
       <div className="px-2 w-full h-full">
-        <section className="w-full h-[400px] flex px-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
+        <section className="w-full h-[400px] flex  sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
           <div className="w-full h-full ">
             <Skeleton className="w-full h-full" />
           </div>

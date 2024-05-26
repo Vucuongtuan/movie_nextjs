@@ -1,9 +1,8 @@
-import Image from "next/image";
 import { getMovie } from "@/api/movie.api";
 import React, { Suspense } from "react";
 import CarouselSlide from "./component/carouselSlide";
-import { cookies } from "next/headers";
 import { Metadata } from "next";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const ListMovie = React.lazy(() => import("./component/listMovie"));
 
@@ -57,11 +56,17 @@ export default async function Home() {
 
   return (
     <main className="  h-auto mt-2">
-      <section className="w-full h-[400px] flex px-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
-        <div className="w-full h-full ">
-          <CarouselSlide data={newMovie.data} />
-        </div>
-      </section>
+      <Suspense
+        fallback={
+          <Skeleton className="w-full  h-[400px] flex mx-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]" />
+        }
+      >
+        <section className="w-full  h-[400px] flex px-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
+          <div className="w-full h-full ">
+            <CarouselSlide data={newMovie.data} />
+          </div>
+        </section>
+      </Suspense>
       <Suspense fallback={<>Loading ....</>}>
         <ListMovie name="Phim hàn quốc" data={newHanUpdate} />
       </Suspense>{" "}

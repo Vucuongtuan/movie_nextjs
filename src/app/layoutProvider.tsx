@@ -1,18 +1,14 @@
 "use client";
-import NavBar from "@/components/navBar";
 import SideBar from "@/components/sideBar";
 import store, { AppStore, RootState } from "@/lib/redux";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import React, { useRef } from "react";
+import { Provider, useSelector } from "react-redux";
 import Transition from "./transition";
-import { ThemeProvider } from "@/components/theme-provider";
-import { usePathname } from "next/navigation";
+
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider, useSession } from "next-auth/react";
-import { useToast } from "@/components/ui/use-toast";
-import { LoginFacebook } from "@/api/auth.api";
-import { auth_login, auth_logout } from "@/lib/redux/auth";
-import Cookies from "js-cookie";
+import NavBar from "@/components/navBar";
+
 const ProviderLayout = ({ children }: { children: React.ReactNode }) => {
   const storeRef = useRef<AppStore>(store());
   return (
@@ -38,10 +34,6 @@ const LayoutWithProvider = ({ children }: { children: React.ReactNode }) => {
   const action = useSelector(
     (state: RootState) => state.actionSideBar.action
   ) as boolean;
-  const pathName = usePathname();
-  const { toast } = useToast();
-  const { data: session, status } = useSession();
-  const dispatch = useDispatch();
 
   return (
     <div className="w-full h-full  bg-[#f8fafc] dark:bg-[#1c1c1e]">
@@ -52,6 +44,7 @@ const LayoutWithProvider = ({ children }: { children: React.ReactNode }) => {
         }   `}
         // style={action ? { width: "95%" } : { width: "83.333333%" }}
       >
+        <NavBar />
         <Transition>{children}</Transition>
         <Toaster />
       </div>
