@@ -81,8 +81,8 @@ export default function ViewDetailsHero({
               <Image
                 src={url + data.item.poster_url}
                 alt={data.item.name}
-                width={476}
-                height={267}
+                width={1032}
+                height={580}
                 className="h-full w-full  object-cover object-center rounded-md "
               />
             </>
@@ -93,8 +93,8 @@ export default function ViewDetailsHero({
               <Image
                 src={url + data.item.poster_url}
                 alt={data.item.name}
-                width={256}
-                height={384}
+                width={476}
+                height={267}
                 className="h-full w-full  object-cover object-top rounded-md brightness-50"
               />{" "}
               <div className=" absolute w-full z-10 h-1/6 bottom-0 bg-gradient-to-t from-[rgb(255,255,255)] via-[rgba(255,255,255,0.69)] to-[rgba(0,0,0,0)] dark:from-[rgb(0,0,0)] dark:via-[rgba(0,0,0,0.69)] dark:to-[rgba(0,0,0,0)]"></div>
