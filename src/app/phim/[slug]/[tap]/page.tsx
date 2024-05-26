@@ -1,8 +1,9 @@
 import { getDetailMovie } from "@/api/movie.api";
 import ViewMovie from "@/app/component/viewMovie";
+import { Skeleton } from "@/components/ui/skeleton";
 import { IMovieData, IMovieTap } from "@/types/movie.types";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
 export default async function Phim({
   params,
@@ -28,7 +29,11 @@ export default async function Phim({
     <>
       <div className="w-3/4 h-full min-[200px]:max-lg:w-full ">
         <div className="h-[500px] w-full min-[200px]:max-md:h-[400px] min-md:max-lg:h-[450px] xl:h-[550px]">
-          <ViewMovie link={tapResult()} />
+          <Suspense
+            fallback={<Skeleton className="h-full w-full rounded-md" />}
+          >
+            <ViewMovie link={tapResult()} />
+          </Suspense>
         </div>
         <div className="w-full h-[200px]  mt-2">
           <h1 className="text-4xl font-semibold min-[200px]:max-md:text-3xl">

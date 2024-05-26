@@ -26,8 +26,9 @@ export default function CarouselSlide({ data }: { data: any }) {
                       <Image
                         src={process.env.BASE_IMAGE_URL + item.poster_url}
                         alt={item.name}
-                        height={780}
-                        width={1200}
+                        width={476}
+                        height={267}
+                        sizes="100vw"
                         loading="lazy"
                         className="h-full w-full object-cover object-top rounded-md transition-all duration-500"
                       />

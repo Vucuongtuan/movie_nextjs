@@ -23,10 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  console.log("====================================");
-  console.log(cookies().get("token")?.value);
-  console.log("====================================");
-
   const [newMovie, newHanUpdate, newTrungUpdate, newLeUpdate] =
     await Promise.all([
       getMovie({

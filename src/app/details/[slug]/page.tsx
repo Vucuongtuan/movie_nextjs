@@ -6,6 +6,7 @@ import { Metadata, ResolvingMetadata } from "next";
 type Props = {
   params: { slug: string };
 };
+
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
@@ -14,13 +15,12 @@ export async function generateMetadata(
   const product = await getDetailMovie(slug);
   const previousImages = (await parent).openGraph?.images || [];
   const image = process.env.BASE_IMAGE_URL + product?.data.item.poster_url;
-  const doc = product?.data.item.content.replace(/<[^>]*>?/gm, "");
   return {
-    title: product?.data.item.name,
-    description: product?.data.item.description,
+    title: product?.data.seoOnPage.titleHead,
+    description: product?.data.seoOnPage.descriptionHead,
     openGraph: {
-      title: `${product?.data.item.name} `,
-      description: doc ?? "",
+      title: `${product?.data.seoOnPage.titleHead}`,
+      description: product?.data.seoOnPage.descriptionHead,
       images: [{ url: image, width: 800, height: 600 }, ...previousImages],
     },
   };

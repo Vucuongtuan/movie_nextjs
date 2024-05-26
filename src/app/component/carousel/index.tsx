@@ -43,8 +43,9 @@ export default function CarouselSize({ data }: { data: any }) {
                       <Image
                         src={process.env.BASE_IMAGE_URL + item.thumb_url}
                         alt={item.name}
-                        width={175}
-                        height={270}
+                        width={256}
+                        height={384}
+                        // placeholder="blur"
                         loading="lazy"
                         className="w-full h-5/6"
                       />

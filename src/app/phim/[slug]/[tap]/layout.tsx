@@ -14,14 +14,13 @@ export async function generateMetadata(
   const product = await getDetailMovie(slug);
   const previousImages = (await parent).openGraph?.images || [];
   const image = process.env.BASE_IMAGE_URL + product?.data.item.poster_url;
-  const doc = product?.data.item.content.replace(/<[^>]*>?/gm, "");
   const tapReple = tap === "full" ? `FULL` : `Tập ${tap.split("-")[1]}`;
   return {
-    title: product?.data.item.name,
-    description: product?.data.item.description,
+    title: product?.data.seoOnPage.titleHead,
+    description: product?.data.seoOnPage.descriptionHead,
     openGraph: {
-      title: `${product?.data.item.name} | ${tapReple}`,
-      description: doc ?? "",
+      title: `${product?.data.seoOnPage.titleHead} | ${tapReple}`,
+      description: product?.data.seoOnPage.descriptionHead,
       images: [{ url: image, width: 800, height: 600 }, ...previousImages],
     },
   };
