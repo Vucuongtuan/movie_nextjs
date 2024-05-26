@@ -3,8 +3,25 @@ import { getMovie } from "@/api/movie.api";
 import React, { Suspense } from "react";
 import CarouselSlide from "./component/carouselSlide";
 import { cookies } from "next/headers";
+import { Metadata } from "next";
 
 const ListMovie = React.lazy(() => import("./component/listMovie"));
+
+export const metadata: Metadata = {
+  title: "TC Phim | Phim mới | Trực tuyến | Phim hay | Phim chiếu rạp",
+  description: "TC Phim - Đem đến cho mọi người những bộ phim mới và phổ biến ",
+  openGraph: {
+    title: "TC Phim | Phim mới | Trực tuyến | Phim hay | Phim chiếu rạp",
+    description:
+      "TC Phim - Đem đến cho mọi người những bộ phim mới và phổ biến ",
+    images: [
+      {
+        url: "/logoFull.png",
+      },
+    ],
+  },
+};
+
 export default async function Home() {
   console.log("====================================");
   console.log(cookies().get("token")?.value);

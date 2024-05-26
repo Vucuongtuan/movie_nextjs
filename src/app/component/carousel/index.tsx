@@ -28,11 +28,11 @@ export default function CarouselSize({ data }: { data: any }) {
           data.data.items.map((item: IMovieData, index: number) => (
             <CarouselItem
               key={index}
-              className="basis-1/3 md:basis-1/3 lg:basis-1/5 xl:basis-1/5 sm:basis-1/3 mb:basis:1/2  group"
+              className="basis-1/3 min-[200px]:max-md:basis-1/3 lg:basis-1/5 xl:basis-1/6 sm:basis-1/3 md:basis-1/4 mb:basis:1/2  group"
             >
               <div className=" h-full">
                 <Card
-                  className="h-[404px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]"
+                  className="h-full rounded-md overflow-hidden relative md:h-[320px] min-[200px]:max-md:h-[250px]"
                   key={item._id}
                 >
                   <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
@@ -48,9 +48,9 @@ export default function CarouselSize({ data }: { data: any }) {
                         loading="lazy"
                         className="w-full h-5/6"
                       />
-                      <span className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.8rem]">
-                        {item.name}
-                      </span>
+                      <div className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.7rem] ">
+                        <span> {item.name}</span>
+                      </div>
                     </Link>
                   </CardContent>
                   <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 dark:text-white font-[500] min-[200px]:max-md:text-[0.5rem]">

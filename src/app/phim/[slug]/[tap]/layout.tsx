@@ -1,7 +1,31 @@
 import { getDetailMovie } from "@/api/movie.api";
 import { IMovieTap } from "@/types/movie.types";
+import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+type Props = {
+  params: { slug: string; tap: string };
+};
 
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug, tap } = params;
+  const product = await getDetailMovie(slug);
+  const previousImages = (await parent).openGraph?.images || [];
+  const image = process.env.BASE_IMAGE_URL + product?.data.item.poster_url;
+  const doc = product?.data.item.content.replace(/<[^>]*>?/gm, "");
+  const tapReple = tap === "full" ? `FULL` : `Tập ${tap.split("-")[1]}`;
+  return {
+    title: product?.data.item.name,
+    description: product?.data.item.description,
+    openGraph: {
+      title: `${product?.data.item.name} | ${tapReple}`,
+      description: doc ?? "",
+      images: [{ url: image, width: 800, height: 600 }, ...previousImages],
+    },
+  };
+}
 export default async function PhimLayout({
   children,
   params,

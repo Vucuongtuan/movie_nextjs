@@ -5,6 +5,7 @@ import NotFound from "./notFound";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
+import { BASE_IMAGE_URL } from "@/api/movie.api";
 
 export default function ListMoviePage() {
   const [data, setData] = useState<any>([]);
@@ -12,9 +13,12 @@ export default function ListMoviePage() {
   useEffect(() => {
     const local = localStorage.getItem("profileUser") ?? "";
     if (local) {
-      const id = JSON.parse(local)?.id;
+      const email = JSON.parse(local)?.email;
       const getData = async () => {
-        const res = await getListMovie(id);
+        const res = await getListMovie(email);
+        console.log("====================================");
+        console.log(res);
+        console.log("====================================");
         setData(res.data.list);
       };
       getData();
@@ -27,16 +31,16 @@ export default function ListMoviePage() {
 
   return (
     <main className="h-auto w-full px-2">
-      <section className="w-full h-fulll ">
+      <section className="w-full h-fulll flex flex-wrap gap-4">
         {data.map((item: any) => (
           <Card
-            className="h-[404px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]"
+            className="h-[390px] w-[250px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[290px] min-[200px]:max-md:w-[190px]"
             key={item.name}
           >
             <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
               <Link href={"/details/" + item.slug} className="w-full h-full">
                 <Image
-                  src={process.env.BASE_IMAGE_URL + item.thumb_url}
+                  src={BASE_IMAGE_URL + item.thumb_url}
                   alt={item.name}
                   width={175}
                   height={270}

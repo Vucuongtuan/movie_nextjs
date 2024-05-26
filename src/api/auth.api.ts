@@ -57,12 +57,13 @@ export const sendOtp = async (email: string) => {
   const data = await res.json();
   return data;
 };
-export const getListMovie = async (id: string) => {
-  const res = await fetch(`https://be-tc-phim.onrender.com/list/id?id=${id}`, {
+export const getListMovie = async (email: string) => {
+  const res = await fetch(`http://localhost:4000/list`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ email: email }),
   });
   const data = await res.json();
   return data;

@@ -51,9 +51,7 @@ export default function ViewDetailsHero({
         thumb_url: movie.thumb_url,
         poster_url: movie.poster_url,
       });
-      console.log("====================================");
-      console.log(res);
-      console.log("====================================");
+
       if (res.status === "success") {
         toast({
           title: "Thêm phim vào danh sách thành công",
@@ -134,7 +132,7 @@ export default function ViewDetailsHero({
           onTrailer ? "mt-0" : "-mt-36"
         }`}
       >
-        <div className="w-[18%] h-full xl:[w-18%] lg:w-[18%] lg:max-xl:w-[22%] md:w-[30%] min-[200px]:max-lg:m-auto min-[200px]:max-lg:w-[60%]">
+        <div className="w-[20%] h-full xl:[w-20%] lg:w-[18%] lg:max-xl:w-[22%] md:w-[30%] min-[200px]:max-lg:m-auto min-[200px]:max-lg:w-[60%]">
           <Image
             src={url + data.item.thumb_url}
             alt={data.item.name}
