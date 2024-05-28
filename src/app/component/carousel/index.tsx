@@ -13,8 +13,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CarouselSize({ data }: { data: any }) {
-  console.log();
-
   return (
     <Carousel
       opts={{
@@ -28,11 +26,11 @@ export default function CarouselSize({ data }: { data: any }) {
           data.data.items.map((item: IMovieData, index: number) => (
             <CarouselItem
               key={index}
-              className="basis-1/3 min-[200px]:max-md:basis-1/3 lg:basis-1/5 xl:basis-1/6 sm:basis-1/3 md:basis-1/4 mb:basis:1/2  group"
+              className="basis-1/3 min-[200px]:max-md:basis-1/3 lg:basis-1/5 xl:basis-1/6 sm:basis-1/3 md:basis-1/4 mb:basis:1/2   group"
             >
               <div className=" h-full">
                 <Card
-                  className="h-full rounded-md overflow-hidden relative md:h-[320px] min-[200px]:max-md:h-[250px]"
+                  className="h-full rounded-md overflow-hidden relative md:h-[320px] min-[200px]:max-md:h-[250px] 2xl:h-[500px]"
                   key={item._id}
                 >
                   <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">

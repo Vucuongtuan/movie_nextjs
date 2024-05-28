@@ -13,11 +13,13 @@ import { useRouter } from "next/navigation";
 import { auth_login } from "@/lib/redux/auth";
 import Cookies from "js-cookie";
 export default function FormLogin() {
+  const [loading, setLoading] = useState<boolean>(false);
   const { toast } = useToast();
   const router = useRouter();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const handleSubmit = useCallback(async (e: any) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const values = e.target;
@@ -52,6 +54,8 @@ export default function FormLogin() {
         title: "Không thể đăng nhập, kiểm tra lại tk và mk",
         variant: "destructive",
       });
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -125,9 +129,12 @@ export default function FormLogin() {
 
         <button
           type="submit"
-          className="px-4 py-1 border-2 rounded-lg w-full font-bold my-2 dark:bg-black bg-white"
+          disabled={loading}
+          className={`px-4 py-1 border-2 rounded-lg w-full font-bold my-2 dark:bg-black bg-white ${
+            loading ? " cursor-not-allowed" : ""
+          }`}
         >
-          Đăng nhập
+          {loading ? "Loading..." : "Đăng nhập"}
         </button>
       </form>
       <Link href="/signup " className="text-[#a0a0a0]">

@@ -80,10 +80,16 @@ export const getUserByEmail = async (email: string) => {
   return data;
 };
 export const createAccount = async (data: any) => {
+  const dataResult = {
+    email: data.email,
+    name: data.name,
+    password: data.password,
+    otp: data.otp,
+  };
   const res = await fetch(`https://be-tc-phim.onrender.com/auth/sign-up`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify(dataResult),
   });
   const dataa = await res.json();
   return dataa;

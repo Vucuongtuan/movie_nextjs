@@ -33,13 +33,14 @@ export default async function DetailMovie({
   const data = await getDetailMovie(params.slug);
   const token = cookies().get("token")?.value;
   return (
-    <main className="w-full h-auto min-h-[500px] px-2">
-      <ViewDetailsHero
-        data={data.data}
-        url={process.env.BASE_IMAGE_URL}
-        token={token}
-      />
-      <section className=""></section>
+    <main className="w-full h-auto min-h-[1500px] px-2 ">
+      <div className=" h-auto relative ">
+        <ViewDetailsHero
+          data={data.data}
+          url={process.env.BASE_IMAGE_URL}
+          token={token}
+        />
+      </div>
     </main>
   );
 }

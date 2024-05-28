@@ -71,7 +71,7 @@ export default function CarouselSlide({ data }: { data: any }) {
                           <p className="flex flex-wrap mt-2 text-[#909090]">
                             {item.category.map((category) => (
                               <Link
-                                href={`/the-loai/${category.slug}`}
+                                href={`/loc-phim/phim-moi?sort_field=modified.time&category=${category.slug}&country=&year=&page=1`}
                                 key={category.id}
                                 className="w-auto h-auto min-w-[80px] mr-2 mb-2 px-2 min-h-[20px] text-center rounded-full border border-[#909090]"
                               >

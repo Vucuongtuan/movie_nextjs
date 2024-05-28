@@ -24,31 +24,37 @@ export default function FormSignup() {
 
   const watchEmail = watch("email");
   const handleSendOtp = useCallback(async () => {
-    setLoading(true);
-    const res = await sendOtp(watchEmail);
-    if (res.status === "success") {
+    try {
+      setLoading(true);
+      const res = await sendOtp(watchEmail);
+      if (res.status === "success") {
+        localStorage.setItem(
+          "profileUser",
+          JSON.stringify({
+            email: res.email,
+            name: res.name,
+          })
+        );
+        Cookies.set("token", res.token);
+        toast({
+          title: "OTP đã gửi đến mail thành công",
+          description: `${watchEmail}`,
+        });
+      }
+    } catch (err) {
       setLoading(false);
-      localStorage.setItem(
-        "profileUser",
-        JSON.stringify({
-          email: res.email,
-          name: res.name,
-        })
-      );
-      Cookies.set("token", res.token);
-      toast({
-        title: "OTP đã gửi đến mail thành công",
-        description: `${watchEmail}`,
-      });
+      alert("Lỗi");
+    } finally {
+      setLoading(false);
     }
   }, [watchEmail]);
 
   const onSubmit = async (data: any) => {
+    setLoading(true);
     try {
-      setLoading(true);
       const res = await createAccount(data);
+      alert(JSON.stringify(res.status));
       if (res.status === "success") {
-        setLoading(false);
         toast({
           title: data.name + " | " + data.password,
           description: JSON.stringify(res),
@@ -56,9 +62,11 @@ export default function FormSignup() {
       }
     } catch (err) {
       toast({
-        title: "Không thể đăng nhập, kiểm tra lại tài khoản và mật khẩu",
+        title: "Không thể đăng ký",
         variant: "destructive",
       });
+    } finally {
+      setLoading(false);
     }
   };
   return (

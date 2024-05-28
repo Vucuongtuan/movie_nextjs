@@ -8,7 +8,7 @@ export default function NavMenu() {
 
   const page = useSelector((state: any) => state.page.value);
   return (
-    <nav className="h-full w-full flex space-x-4 px-4 text-xl  min-[200px]:max-md:w-full">
+    <nav className="h-full w-full pt-2 flex space-x-4 px-4 text-xl  min-[200px]:max-md:w-full">
       <li>
         <Link
           href="/"

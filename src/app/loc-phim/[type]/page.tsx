@@ -29,7 +29,7 @@ export default async function LocMovieType({
       <section className="w-full h-full grid gap-4 xl:grid-cols-5  lg:grid-cols-4 md:grid-cols-3 min-[200px]:max-md:grid-cols-3">
         {data.map((item: any) => (
           <Card
-            className="h-[404px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]"
+            className="h-[484px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]"
             key={item._id}
           >
             <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">

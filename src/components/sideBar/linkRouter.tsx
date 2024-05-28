@@ -29,7 +29,12 @@ export default function LinkRouter({ action }: { action: boolean }) {
             pathName === "/" ? "bg-red-600" : null
           }`}
         >
-          <Link href="/" className=" w-full flex items-center overflow-hidden">
+          <Link
+            href="/"
+            className={` w-full flex items-center overflow-hidden  ${
+              action ? " justify-center" : "justify-start"
+            }`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -44,7 +49,12 @@ export default function LinkRouter({ action }: { action: boolean }) {
                 d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
               />
             </svg>
-            {action ? <></> : <span>Trang chủ</span>}
+
+            {action ? (
+              <></>
+            ) : (
+              <span className="text-clip overflow-hidden">Trang chủ</span>
+            )}
           </Link>
         </li>
         <li
@@ -54,7 +64,9 @@ export default function LinkRouter({ action }: { action: boolean }) {
         >
           <Link
             href="/search"
-            className=" w-full flex items-center overflow-hidden"
+            className={` w-full flex items-center overflow-hidden ${
+              action ? " justify-center" : "justify-start"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +92,9 @@ export default function LinkRouter({ action }: { action: boolean }) {
         >
           <Link
             href={`/danh-sach`}
-            className=" w-full flex items-center overflow-hidden"
+            className={` w-full flex items-center overflow-hidden ${
+              action ? " justify-center" : "justify-start"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +120,9 @@ export default function LinkRouter({ action }: { action: boolean }) {
         >
           {Cookies.get("token") ? (
             <button
-              className=" w-full flex items-center justify-start overflow-hidden text-left"
+              className={` w-full flex items-center ${
+                action ? " justify-center" : "justify-start"
+              } overflow-hidden `}
               onClick={async () => {
                 localStorage.removeItem("profileUser");
                 await signOut();
@@ -121,7 +137,7 @@ export default function LinkRouter({ action }: { action: boolean }) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6 mx-2"
+                className="w-6 h-6 mx-2"
               >
                 <path
                   strokeLinecap="round"
@@ -135,7 +151,9 @@ export default function LinkRouter({ action }: { action: boolean }) {
           ) : (
             <Link
               href="/login"
-              className=" w-full flex items-center overflow-hidden"
+              className={` w-full flex items-center overflow-hidden ${
+                action ? " justify-center" : "justify-start"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

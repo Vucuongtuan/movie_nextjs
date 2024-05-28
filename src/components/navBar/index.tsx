@@ -4,6 +4,7 @@ import Search from "./search";
 import Dropdown from "./dropdown";
 import NavMenu from "./navMenu";
 import { cookies } from "next/headers";
+import Image from "next/image";
 export default function NavBar() {
   return (
     <header className="w-full h-full flex mb-2  pt-3 min-[200px]:max-md:flex-col-reverse min-[200px]:max-md:mb-3">
@@ -11,10 +12,10 @@ export default function NavBar() {
         <NavMenu />
       </div>
       <div className=" h-full flex-grow  flex justify-end px-4 min-[200px]:max-md:w-full ">
-        <div className="logo w-1/3 hidden min-[200px]:max-md:block">
-          TC Phim
+        <div className="logo w-1/2 hidden  font-bold text-4xl text-red-600 min-[200px]:max-md:block">
+          TC <span className="dark:text-white">Phim</span>
         </div>
-        <div className="w-1/3 mx-6">
+        <div className="w-1/2 mx-6">
           <Search />
         </div>
         <ModeToggle />

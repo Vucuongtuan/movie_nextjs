@@ -44,7 +44,7 @@ export default function ViewMovie({ link }: { link: IViewMovieProps }) {
             tải lại
           </span>
         </div>
-        <div className="flex-grow flex">
+        <div className="flex-grow flex justify-end">
           <button
             disabled={serverLink === false}
             onClick={() => setServerLink(false)}

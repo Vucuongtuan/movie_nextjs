@@ -14,7 +14,7 @@ import LinkRouter from "./linkRouter";
 export default function SideBar({ action }: { action: boolean }) {
   return (
     <div
-      className={`w-1/6 h-full fixed top-0 left-0 border-r-2 border-[rgba(255, 255, 255, 0.6576681698069853)]  transition-all duration-500 hidden md:block ${
+      className={`w-1/6 h-full max-w-[300px] fixed top-0 left-0 border-r-2 border-[rgba(255, 255, 255, 0.6576681698069853)]  transition-all duration-500 hidden md:block ${
         action ? ` w-[5%] min-md:max-lg:min-w-[50px] ` : ""
       }`}
     >

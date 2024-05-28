@@ -67,10 +67,12 @@ export default function ViewDetailsHero({
     // const res = await AddMovieToList(dataUser.id, dataUser);
   }, []);
   return (
-    <div className="h-auto w-full relative">
+    <div className="h-full min-h-[400px] w-full relative bg-red-400">
       <section
         className={`w-full ${
-          onTrailer ? "h-[500px]" : "h-[470px]"
+          onTrailer
+            ? "xl:h-[600px] min-[200px]:h-[400px]"
+            : " xl:h-[600px] min-[200px]:h-[400px]"
         } transition-all duration-500  flex relative my-2 `}
       >
         {onTrailer ? (
@@ -89,7 +91,7 @@ export default function ViewDetailsHero({
           )
         ) : (
           <>
-            <div className="w-full h-full relative">
+            <div className="w-full h-full relative ">
               <Image
                 src={url + data.item.poster_url}
                 alt={data.item.name}
@@ -108,7 +110,7 @@ export default function ViewDetailsHero({
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className=" w-32 h-32 group-hover:text-green-500 cursor-pointer"
+                  className=" w-32 h-32 group-hover:text-red-500 cursor-pointer"
                   onClick={() => setOnTrailer(true)}
                 >
                   <path
@@ -128,8 +130,8 @@ export default function ViewDetailsHero({
         )}
       </section>
       <section
-        className={`h-[400px] w-full px-4 flex min-[200px]:max-lg:flex-col  transition-all absolute  duration-500 z-50 ${
-          onTrailer ? "mt-0" : "-mt-36"
+        className={`h-auto w-full  flex min-[200px]:max-lg:flex-col  transition-all absolute  duration-500 z-50 ${
+          onTrailer ? "mt-0 px-0" : "-mt-36 px-4"
         }`}
       >
         <div className="w-[20%] h-full xl:[w-20%] lg:w-[18%] lg:max-xl:w-[22%] md:w-[30%] min-[200px]:max-lg:m-auto min-[200px]:max-lg:w-[60%]">
@@ -140,7 +142,7 @@ export default function ViewDetailsHero({
             height={400}
             className="w-full h-[85%] rounded-md"
           />
-          <div className="h-[15%]  w-full ">
+          <div className="h-[15%]  w-full py-2">
             {data.item.episodes[0].server_data[0].slug === "" ? (
               <button
                 className=" w-full h-[100%] py-2 bg-red-500 rounded-md hover:bg-red-600"
@@ -185,9 +187,9 @@ export default function ViewDetailsHero({
           </div>
         </div>
         <div className="w-[70%] px-2 h-full min-[200px]:max-lg:w-full">
-          <h2 className="text-5xl font-bold text-red-600 dark:text-white min-[200px]:max-lg:text-4xl">
+          <h1 className="text-5xl font-bold text-red-600 dark:text-white min-[200px]:max-lg:text-4xl">
             {data.item.name}
-          </h2>
+          </h1>
           <p>
             <label
               className="text-lg dark:text-white font-semibold"
@@ -221,7 +223,7 @@ export default function ViewDetailsHero({
           <p className="flex flex-wrap mt-2 dark:text-white font-semibold">
             {data.item.category.map((category: any) => (
               <Link
-                href={`/the-loai/${category.slug}`}
+                href={`/loc-phim/phim-moi?sort_field=modified.time&category=${category.slug}&country=&year=&page=1`}
                 key={category.id}
                 className="w-auto h-auto min-w-[80px] mr-2 mb-2 px-2 min-h-[20px] text-center rounded-full border border-[#909090]"
               >

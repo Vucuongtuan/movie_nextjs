@@ -61,7 +61,7 @@ export default async function Home() {
           <Skeleton className="w-full  h-[400px] flex mx-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]" />
         }
       >
-        <section className="w-full  h-[400px] flex px-2 sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
+        <section className="w-full  h-[400px] flex px-2 xl:h-[500px] 2xl:h-[600px]  sm:h-[400px] lg:h-[500px] min-[200px]:max-md:h-[300px]">
           <div className="w-full h-full ">
             <CarouselSlide data={newMovie.data} />
           </div>

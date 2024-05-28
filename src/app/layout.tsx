@@ -6,6 +6,7 @@ import LayoutProvider from "./layoutProvider";
 import NavBar from "@/components/navBar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cookies } from "next/headers";
+import Footer from "@/components/footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -47,7 +48,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LayoutProvider>{children}</LayoutProvider>
+          <LayoutProvider>
+            <section className="w-full  max-w-[1920px] m-auto">
+              {children}
+            </section>
+            <Footer />
+          </LayoutProvider>
         </ThemeProvider>
       </body>
     </html>

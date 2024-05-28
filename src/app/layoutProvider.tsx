@@ -8,6 +8,7 @@ import Transition from "./transition";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider, useSession } from "next-auth/react";
 import NavBar from "@/components/navBar";
+import Footer from "@/components/footer";
 
 const ProviderLayout = ({ children }: { children: React.ReactNode }) => {
   const storeRef = useRef<AppStore>(store());
@@ -45,7 +46,8 @@ const LayoutWithProvider = ({ children }: { children: React.ReactNode }) => {
         // style={action ? { width: "95%" } : { width: "83.333333%" }}
       >
         <NavBar />
-        <Transition>{children}</Transition>
+        {children}
+
         <Toaster />
       </div>
     </div>
