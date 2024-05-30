@@ -49,6 +49,19 @@ export default function NavMenu() {
       <li>
         {" "}
         <Link
+          href="/sap-chieu"
+          className={`${
+            pathName === "/sap-chieu"
+              ? "text-xl border-b-2 border-red-600"
+              : "text-sm text-[#989898]"
+          }`}
+        >
+          Sắp chiếu
+        </Link>
+      </li>
+      <li>
+        {" "}
+        <Link
           href="/loc-phim"
           className={`${
             pathName === "/loc-phim"
