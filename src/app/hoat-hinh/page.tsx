@@ -58,16 +58,32 @@ export default async function Cartoon() {
         </div>
       </section>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim hành động" data={newTrungUpdate} />{" "}
+        <ListMovie
+          name="Phim hành động"
+          data={newTrungUpdate}
+          slug={{ type: "hoat-hinh", country: "", category: "hanh-dong" }}
+        />{" "}
       </Suspense>{" "}
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim tình cảm" data={newLeUpdate} />{" "}
+        <ListMovie
+          name="Phim tình cảm"
+          data={newLeUpdate}
+          slug={{ type: "hoat-hinh", country: "", category: "tinh-cam" }}
+        />{" "}
       </Suspense>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim hài hước" data={newhaiUpdate} />{" "}
+        <ListMovie
+          name="Phim hài hước"
+          data={newhaiUpdate}
+          slug={{ type: "hoat-hinh", country: "", category: "hai-huoc" }}
+        />{" "}
       </Suspense>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim viễn tưởng" data={newVienTuong} />{" "}
+        <ListMovie
+          name="Phim viễn tưởng"
+          data={newVienTuong}
+          slug={{ type: "hoat-hinh", country: "", category: "vien-tuong" }}
+        />{" "}
       </Suspense>
       <section className="w-full flex justify-center py-8">
         <Link

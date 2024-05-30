@@ -55,3 +55,14 @@ export const getListOption = async (name: string) => {
   const data = await res.json();
   return data;
 };
+export const getMovieSapChieu = async (page: string) => {
+  const res = await fetch(
+    `${process.env.BASE_URL_API}/v1/api/danh-sach/phim-sap-chieu?page=${page}`,
+    {
+      method: "GET",
+      next: { revalidate: 5 },
+    }
+  );
+  const data = await res.json();
+  return data;
+};

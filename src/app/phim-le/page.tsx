@@ -67,19 +67,39 @@ export default async function PhimLe() {
         </div>
       </section>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim hành động" data={newTrungUpdate} />{" "}
+        <ListMovie
+          name="Phim hành động"
+          data={newTrungUpdate}
+          slug={{ type: "phim-le", country: "", category: "hanh-dong" }}
+        />{" "}
       </Suspense>{" "}
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim tình cảm" data={newLeUpdate} />{" "}
+        <ListMovie
+          name="Phim tình cảm"
+          data={newLeUpdate}
+          slug={{ type: "phim-le", country: "", category: "tinh-cam" }}
+        />{" "}
       </Suspense>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim hài hước" data={newhaiUpdate} />{" "}
+        <ListMovie
+          name="Phim hài hước"
+          data={newhaiUpdate}
+          slug={{ type: "phim-le", country: "", category: "hai-huoc" }}
+        />{" "}
       </Suspense>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim viễn tưởng" data={newVienTuong} />{" "}
+        <ListMovie
+          name="Phim viễn tưởng"
+          data={newVienTuong}
+          slug={{ type: "phim-le", country: "", category: "vien-tuong" }}
+        />{" "}
       </Suspense>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim kinh dị" data={newKinhDiUpdate} />{" "}
+        <ListMovie
+          name="Phim kinh dị"
+          data={newKinhDiUpdate}
+          slug={{ type: "phim-le", country: "", category: "kinh-di" }}
+        />{" "}
       </Suspense>
     </main>
   );

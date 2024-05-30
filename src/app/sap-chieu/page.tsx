@@ -1,35 +1,23 @@
-import { getMovieByOption } from "@/api/movie.api";
-import Transition from "@/app/transition";
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
-import Link from "next/link";
+import { getMovieSapChieu } from "@/api/movie.api";
 import React from "react";
+import Transition from "../transition";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import Image from "next/image";
+import PaginationLoc from "@/components/pagination/pagination";
+import PaginationLayout from "./paginationLayout";
 
-import { AnimatePresence, motion } from "framer-motion";
-export default async function LocMovieType({
-  params,
+export default async function SapChieuPage({
   searchParams,
 }: {
-  params: { type: string };
-  searchParams: {
-    country: string;
-    category: string;
-    year: string;
-    page: string;
-  };
+  searchParams: { page: string };
 }) {
-  const res = await getMovieByOption(
-    params.type,
-    searchParams.category,
-    searchParams.country,
-    searchParams.year,
-    searchParams.page
-  );
-  const data = res.data.items;
+  const res = await getMovieSapChieu(searchParams.page || "1");
+
   return (
-    <div className="w-full  min-h-[700px]  ">
+    <main className="w-full h-auto min-h-[90vh] px-2">
       <section className="w-full h-full grid gap-4 xl:grid-cols-5  lg:grid-cols-4 md:grid-cols-3 min-[200px]:max-md:grid-cols-3">
-        {data.map((item: any, index: number) => (
+        {res.data.items.map((item: any, index: number) => (
           <Transition key={item._id} index={index}>
             <Card className="h-[484px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]">
               <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
@@ -66,6 +54,11 @@ export default async function LocMovieType({
           </Transition>
         ))}
       </section>
-    </div>
+      <section>
+        <PaginationLayout
+          totalPage={res.data.params.pagination.totalItemsPerPage}
+        />
+      </section>
+    </main>
   );
 }

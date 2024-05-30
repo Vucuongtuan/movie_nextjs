@@ -22,37 +22,57 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const [newMovie, newHanUpdate, newTrungUpdate, newLeUpdate] =
-    await Promise.all([
-      getMovie({
-        type: "phim-moi-cap-nhat",
-        country: "",
-        year: new Date().getFullYear().toString(),
-        category: "",
-        page: "1",
-      }),
-      getMovie({
-        type: "phim-bo",
-        country: "han-quoc",
-        year: new Date().getFullYear().toString(),
-        category: "",
-        page: "1",
-      }),
-      getMovie({
-        type: "phim-bo",
-        country: "trung-quoc",
-        year: new Date().getFullYear().toString(),
-        category: "",
-        page: "1",
-      }),
-      getMovie({
-        type: "phim-bo",
-        country: "au-my",
-        year: new Date().getFullYear().toString(),
-        category: "",
-        page: "1",
-      }),
-    ]);
+  const [
+    newMovie,
+    newHanUpdate,
+    newTrungUpdate,
+    newLeUpdate,
+    newBoThaiLan,
+    newBoNhatBan,
+  ] = await Promise.all([
+    getMovie({
+      type: "phim-moi-cap-nhat",
+      country: "",
+      year: new Date().getFullYear().toString(),
+      category: "",
+      page: "1",
+    }),
+    getMovie({
+      type: "phim-bo",
+      country: "han-quoc",
+      year: new Date().getFullYear().toString(),
+      category: "",
+      page: "1",
+    }),
+    getMovie({
+      type: "phim-bo",
+      country: "trung-quoc",
+      year: new Date().getFullYear().toString(),
+      category: "",
+      page: "1",
+    }),
+    getMovie({
+      type: "phim-bo",
+      country: "au-my",
+      year: new Date().getFullYear().toString(),
+      category: "",
+      page: "1",
+    }),
+    getMovie({
+      type: "phim-bo",
+      country: "thai-lan",
+      year: new Date().getFullYear().toString(),
+      category: "",
+      page: "1",
+    }),
+    getMovie({
+      type: "phim-bo",
+      country: "nhat-ban",
+      year: new Date().getFullYear().toString(),
+      category: "",
+      page: "1",
+    }),
+  ]);
 
   return (
     <main className="  h-auto mt-2">
@@ -68,13 +88,39 @@ export default async function Home() {
         </section>
       </Suspense>
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim hàn quốc" data={newHanUpdate} />
+        <ListMovie
+          name="Phim Hàn Quốc"
+          data={newHanUpdate}
+          slug={{ type: "phim-bo", country: "han-quoc", category: "" }}
+        />
       </Suspense>{" "}
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim trung quốc" data={newTrungUpdate} />{" "}
+        <ListMovie
+          name="Phim Trung Quốc"
+          data={newTrungUpdate}
+          slug={{ type: "phim-bo", country: "trung-quoc", category: "" }}
+        />{" "}
       </Suspense>{" "}
       <Suspense fallback={<>Loading ....</>}>
-        <ListMovie name="Phim âu mỹ" data={newLeUpdate} />{" "}
+        <ListMovie
+          name="Phim Âu Mỹ"
+          data={newLeUpdate}
+          slug={{ type: "phim-bo", country: "au-my", category: "" }}
+        />{" "}
+      </Suspense>
+      <Suspense fallback={<>Loading ....</>}>
+        <ListMovie
+          name="Phim Thái Lan"
+          data={newBoThaiLan}
+          slug={{ type: "phim-bo", country: "thai-lan", category: "" }}
+        />{" "}
+      </Suspense>
+      <Suspense fallback={<>Loading ....</>}>
+        <ListMovie
+          name="Phim Nhật Bản"
+          data={newBoNhatBan}
+          slug={{ type: "phim-bo", country: "nhat-ban", category: "" }}
+        />
       </Suspense>
     </main>
   );

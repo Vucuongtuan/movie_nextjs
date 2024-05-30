@@ -19,13 +19,7 @@ export default function PaginationLoc({ params }: { params: string }) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [visiblePages, setVisiblePages] = useState<number[]>([]);
-  console.log(
-    `${pathName}?sort_field=modified.time&category=${
-      searchParams.get("category") || ""
-    }&country=${searchParams.get("country") || ""}&year=${
-      searchParams.get("year") || ""
-    }&page=1`
-  );
+
   useEffect(() => {
     const get = async () => {
       const res = await getMovieByOption(

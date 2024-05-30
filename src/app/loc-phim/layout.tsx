@@ -1,6 +1,6 @@
 import { getListOption, getMovie, getMovieByOption } from "@/api/movie.api";
 import FormLoc from "./form";
-import PaginationLoc from "./pagination";
+import PaginationLoc from "../../components/pagination/pagination";
 
 export default async function LocLayout({
   children,
