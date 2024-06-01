@@ -87,7 +87,9 @@ export default async function Cartoon() {
       </Suspense>
       <section className="w-full flex justify-center py-8">
         <Link
-          href={"/danh-sach/hoat-hinh"}
+          href={
+            "/loc-phim/hoat-hinh?sort_field=modified.time&category=&country=&year=2024&page=1"
+          }
           className="bg-red-400 p-2 rounded-md font-semibold"
         >
           Xem thêm

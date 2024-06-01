@@ -54,7 +54,7 @@ export default function CarouselSize({ data }: { data: any }) {
                   </CardContent>
                   <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 a dark:text-white font-[500] min-[200px]:max-md:text-[0.5rem]">
                     {item.episode_current.length > 8 ? (
-                      <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
+                      <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-1 font-[0.6rem]">
                         {item.episode_current.slice(0, 8)}
                       </span>
                     ) : (
