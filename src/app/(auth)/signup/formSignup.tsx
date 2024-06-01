@@ -53,10 +53,9 @@ export default function FormSignup() {
     setLoading(true);
     try {
       const res = await createAccount(data);
-      alert(JSON.stringify(res.status));
       if (res.status === "success") {
         toast({
-          title: data.name + " | " + data.password,
+          title: data.name,
           description: JSON.stringify(res),
         });
       }

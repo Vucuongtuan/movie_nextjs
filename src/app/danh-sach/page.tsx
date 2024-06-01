@@ -12,13 +12,10 @@ export default function ListMoviePage() {
 
   useEffect(() => {
     const local = localStorage.getItem("profileUser") ?? "";
-    if (local) {
+    if (local !== undefined) {
       const email = JSON.parse(local)?.email;
       const getData = async () => {
         const res = await getListMovie(email);
-        console.log("====================================");
-        console.log(res);
-        console.log("====================================");
         setData(res.data.list);
       };
       getData();

@@ -67,7 +67,7 @@ export default function ViewDetailsHero({
     // const res = await AddMovieToList(dataUser.id, dataUser);
   }, []);
   return (
-    <div className="h-full min-h-[400px] w-full relative bg-red-400">
+    <div className="h-full min-h-[400px] w-full relative">
       <section
         className={`w-full ${
           onTrailer

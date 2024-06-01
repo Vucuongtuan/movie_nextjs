@@ -37,7 +37,7 @@ export const AddMovieToList = async (
     email: email,
     movie,
   };
-  const res = await fetch(`https://be-tc-phim.onrender.com/list`, {
+  const res = await fetch(`https://be-tc-phim.onrender.com/list/add`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
