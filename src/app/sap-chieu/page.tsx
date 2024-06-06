@@ -19,7 +19,7 @@ export default async function SapChieuPage({
       <section className="w-full h-full grid gap-4 xl:grid-cols-5  lg:grid-cols-4 md:grid-cols-3 min-[200px]:max-md:grid-cols-3">
         {res.data.items.map((item: any, index: number) => (
           <Transition key={item._id} index={index}>
-            <Card className="h-[484px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[280px]">
+            <Card className="h-[484px] rounded-md overflow-hidden relative min-[200px]:max-md:h-[230px]">
               <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
                 <Link href={"/details/" + item.slug} className="w-full h-full">
                   <Image
@@ -28,16 +28,16 @@ export default async function SapChieuPage({
                     width={175}
                     height={270}
                     loading="lazy"
-                    className="w-full h-5/6"
+                    className="w-full h-5/6  min-[200px]:max-md:h-[80%]"
                   />
-                  <span className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.8rem]">
-                    {item.name}
-                  </span>
+                  <div className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.7rem] min-[200px]:max-md:h-[18%]">
+                    <span> {item.name}</span>
+                  </div>
                 </Link>
               </CardContent>
-              <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 dark:text-white font-[500] min-[200px]:max-md:text-[0.5rem]">
+              <div className="h-6 text-sm w-full flex justify-between md:pt-1 md:px-1 absolute top-0 right-0 a dark:text-white font-[500] min-[200px]:max-md: min-[200px]:max-md:text-[0.5rem]">
                 {item.episode_current.length > 8 ? (
-                  <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
+                  <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-1 font-[0.6rem]">
                     {item.episode_current.slice(0, 8)}
                   </span>
                 ) : (
@@ -47,7 +47,8 @@ export default async function SapChieuPage({
                 )}
 
                 <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
-                  {item.lang} / {item.year}
+                  <span className="max-md:hidden">{item.lang}/</span>
+                  {item.year}
                 </span>
               </div>
             </Card>

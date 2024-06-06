@@ -12,7 +12,7 @@ export default function NavBar() {
         <NavMenu />
       </div>
       <div className=" h-full flex-grow  flex justify-end px-4 min-[200px]:max-md:w-full ">
-        <div className="logo w-1/2 hidden  font-bold text-4xl text-red-600 min-[200px]:max-md:block">
+        <div className="logo w-1/2 hidden  font-bold text-2xl text-red-600 min-[200px]:max-md:block ">
           TC <span className="dark:text-white">Phim</span>
         </div>
         <div className="w-1/2 mx-6">

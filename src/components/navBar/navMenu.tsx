@@ -14,8 +14,8 @@ export default function NavMenu() {
           href="/"
           className={`${
             pathName === "/"
-              ? "text-xl border-b-[3px] group  border-red-600"
-              : "text-sm text-[#989898]"
+              ? "text-xl border-b-[3px] group  border-red-600 min-[200px]:max-md:text-lg "
+              : "text-sm text-[#989898] min-[200px]:max-md:text-[0.75rem]"
           }`}
         >
           Phim bộ
@@ -26,8 +26,8 @@ export default function NavMenu() {
           href="/phim-le"
           className={`${
             pathName === "/phim-le"
-              ? "text-xl border-b-2 border-red-600"
-              : "text-sm text-[#989898]"
+              ? "text-xl border-b-2 border-red-600 min-[200px]:max-md:text-lg"
+              : "text-sm text-[#989898] min-[200px]:max-md:text-[0.75rem]"
           }`}
         >
           Phim lẻ
@@ -39,8 +39,8 @@ export default function NavMenu() {
           href="/hoat-hinh"
           className={`${
             pathName === "/hoat-hinh"
-              ? "text-xl border-b-2 border-red-600"
-              : "text-sm text-[#989898]"
+              ? "text-xl border-b-2 border-red-600 min-[200px]:max-md:text-lg"
+              : "text-sm text-[#989898] min-[200px]:max-md:text-[0.75rem]"
           }`}
         >
           Hoạt hình
@@ -52,8 +52,8 @@ export default function NavMenu() {
           href="/sap-chieu"
           className={`${
             pathName === "/sap-chieu"
-              ? "text-xl border-b-2 border-red-600"
-              : "text-sm text-[#989898]"
+              ? "text-xl border-b-2 border-red-600 min-[200px]:max-md:text-lg"
+              : "text-sm text-[#989898] min-[200px]:max-md:text-[0.75rem]"
           }`}
         >
           Sắp chiếu
@@ -65,8 +65,8 @@ export default function NavMenu() {
           href="/loc-phim"
           className={`${
             pathName === "/loc-phim"
-              ? "text-xl border-b-2 border-red-600"
-              : "text-sm text-[#989898]"
+              ? "text-xl border-b-2 border-red-600 min-[200px]:max-md:text-lg"
+              : "text-sm text-[#989898] min-[200px]:max-md:text-[0.75rem]"
           }`}
         >
           Lọc phim

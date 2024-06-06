@@ -13,9 +13,9 @@ interface IListMovieProps {
 }
 export default function ListMovie({ name, data, slug }: IListMovieProps) {
   return (
-    <section className="w-full h-[460px] xl:h-auto sm:h-[380px] md:h-[400px] min-[200px]:max-md:h-[300px]  xs:bg-black  my-3">
+    <section className="w-full h-[460px]  xl:h-auto sm:h-[380px] md:h-[400px] min-[200px]:max-md:h-[280px]  xs:bg-black  my-3">
       <div className="flex p-2">
-        <h3 className="text-3xl w-3/4 min-[200px]:max-lg:w-[60%]  font-semibold   text-black dark:text-white">
+        <h3 className="text-3xl w-3/4 min-[200px]:max-lg:w-[60%]  font-semibold  min-[200px]:max-md:text-2xl  text-black dark:text-white">
           {name}
         </h3>
         <div className="flex-grow float-right">

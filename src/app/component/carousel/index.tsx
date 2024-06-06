@@ -30,7 +30,7 @@ export default function CarouselSize({ data }: { data: any }) {
             >
               <div className=" h-full">
                 <Card
-                  className="h-full rounded-md overflow-hidden relative md:h-[320px] min-[200px]:max-md:h-[250px] 2xl:h-[500px]"
+                  className="h-full  rounded-md overflow-hidden relative md:h-[320px] min-[200px]:max-md:h-[200px] 2xl:h-[500px]"
                   key={item._id}
                 >
                   <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">
@@ -45,14 +45,14 @@ export default function CarouselSize({ data }: { data: any }) {
                         height={384}
                         // placeholder="blur"
                         loading="lazy"
-                        className="w-full h-5/6"
+                        className="w-full h-5/6 min-[200px]:max-md:h-[82%]"
                       />
-                      <div className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.7rem] ">
+                      <div className="h-1/6  w-full p-1 text-md font-semibold min-[200px]:max-md:text-[0.7rem] min-[200px]:max-md:h-[18%]">
                         <span> {item.name}</span>
                       </div>
                     </Link>
                   </CardContent>
-                  <div className="h-6 text-sm w-full flex justify-between pt-1 px-1 absolute top-0 right-0 a dark:text-white font-[500] min-[200px]:max-md:text-[0.5rem]">
+                  <div className="h-6 text-sm w-full flex justify-between md:pt-1 md:px-1 absolute top-0 right-0 a dark:text-white font-[500] min-[200px]:max-md: min-[200px]:max-md:text-[0.5rem]">
                     {item.episode_current.length > 8 ? (
                       <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-1 font-[0.6rem]">
                         {item.episode_current.slice(0, 8)}
@@ -64,7 +64,8 @@ export default function CarouselSize({ data }: { data: any }) {
                     )}
 
                     <span className="bg-white dark:bg-[#1f1f1f] h-full rounded-full px-2">
-                      {item.lang} / {item.year}
+                      <span className="max-md:hidden">{item.lang}/</span>
+                      {item.year}
                     </span>
                   </div>
                 </Card>

@@ -15,7 +15,7 @@ import Link from "next/link";
 export default function CarouselSlide({ data }: { data: any }) {
   return (
     <>
-      <Carousel className="w-full h-full slideShow rounded-md">
+      <Carousel className="w-full h-full slideShow rounded-md ">
         <CarouselContent>
           {data.items.map((item: IMovieData, index: number) => (
             <CarouselItem key={item._id}>
@@ -32,21 +32,21 @@ export default function CarouselSlide({ data }: { data: any }) {
                         className="h-full w-full object-cover object-top rounded-md transition-all duration-500"
                       />
                       <div
-                        className="absolute h-full   top-0 left-0 bg-gradient-to-r  from-[rgba(0,0,0,0.8453432398349965)] via-[rgba(0,0,0,0.6576681698069853)] to-transparent"
+                        className="absolute h-full w-full    top-0 left-0 bg-gradient-to-r  from-[rgba(0,0,0,0.8453432398349965)] via-[rgba(0,0,0,0.6576681698069853)] to-transparent"
                         style={{ width: "100%" }}
                       >
                         <div
-                          className="w-1/2 h-full  flex flex-col justify-end       py-6 ml-5 "
-                          style={{ width: "50%" }}
+                          style={{ width: "80%" }}
+                          className="w-1/2 h-full  flex flex-col justify-end   min-[200px]:max-md:w-[80%]  min-[200px]:max-md:px-8   py-6 md:mx-5 "
                         >
-                          <p>
-                            <h3 className="text-4xl font-bold text-white">
+                          <p className=" min-[200px]:max-md:text-ellipsis  min-[200px]:max-md:overflow-hidden  min-[200px]:max-md:whitespace-nowrap ">
+                            <h3 className="text-4xl font-bold text-white min-[200px]:max-md:text-lg ">
                               {item.name}
                             </h3>
                           </p>
-                          <p>
+                          <p className=" min-[200px]:max-md:text-ellipsis  min-[200px]:max-md:overflow-hidden  min-[200px]:max-md:whitespace-nowrap">
                             <label
-                              className="text-lg text-white"
+                              className="text-md text-white  "
                               htmlFor={item.origin_name}
                             >
                               {item.origin_name}
@@ -73,7 +73,9 @@ export default function CarouselSlide({ data }: { data: any }) {
                               <Link
                                 href={`/loc-phim/phim-moi?sort_field=modified.time&category=${category.slug}&country=&year=&page=1`}
                                 key={category.id}
-                                className="w-auto h-auto min-w-[80px] mr-2 mb-2 px-2 min-h-[20px] text-center rounded-full border border-[#909090]"
+                                className="w-auto h-auto min-w-[80px] mr-2 mb-2 px-2 min-h-[20px] text-center rounded-full border border-[#909090]
+                                min-[200px]:max-md:text-[0.7rem]
+                                "
                               >
                                 {category.name}
                               </Link>
