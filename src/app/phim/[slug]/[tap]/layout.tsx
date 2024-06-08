@@ -2,7 +2,7 @@ import { getDetailMovie } from "@/api/movie.api";
 import { IMovieTap } from "@/types/movie.types";
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-export const dynamic = "no-cache";
+// export const dynamic = "no-cache";
 
 type Props = {
   params: { slug: string; tap: string };
