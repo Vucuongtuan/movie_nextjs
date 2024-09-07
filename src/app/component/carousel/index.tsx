@@ -30,7 +30,7 @@ export default function CarouselSize({ data }: { data: any }) {
             >
               <div className=" h-full">
                 <Card
-                  className="h-full  rounded-md overflow-hidden relative md:h-[320px] min-[200px]:max-md:h-[200px] 2xl:h-[500px]"
+                  className="h-full  rounded-md overflow-hidden relative "
                   key={item._id}
                 >
                   <CardContent className="h-full  w-full flex flex-col aspect-square items-center justify-center ">

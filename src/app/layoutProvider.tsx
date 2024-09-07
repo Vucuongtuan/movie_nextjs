@@ -32,17 +32,11 @@ export default function LayoutProvider({
 }
 
 const LayoutWithProvider = ({ children }: { children: React.ReactNode }) => {
-  const action = useSelector(
-    (state: RootState) => state.actionSideBar.action
-  ) as boolean;
-
   return (
     <div className="w-full h-full  bg-[#f8fafc] dark:bg-[#1c1c1e]">
-      <SideBar action={action} />
+      <SideBar />
       <div
-        className={` h-full float-right transition-all duration-500 w-full ${
-          action ? "w-[100%] md:w-[95%]" : "w-[100%] md:w-[83.333333%] "
-        }   `}
+        className={` h-full float-right transition-all duration-500 w-full md:w-[calc(100%-80px)]   `}
         // style={action ? { width: "95%" } : { width: "83.333333%" }}
       >
         <NavBar />
